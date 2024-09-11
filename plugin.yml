@@ -1,0 +1,8 @@
+name: TradeGui
+version: 1.0.0
+main: PremierMcpe\TradeGui\Main
+api: 5.3.0
+
+permissions:
+  tradegui.command.trade:
+    default: true

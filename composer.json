@@ -1,0 +1,24 @@
+{
+  "name": "premiermcpe/tradegui",
+  "description": "Trade Gui Plugin for PocketMine-MP",
+  "type": "library",
+  "version": "v1.0.0",
+  "require": {
+    "muqsit/invmenu": "^4.6.5",
+    "dktapps/pmforms": "^2.2.0"
+  },
+  "require-dev": {
+    "pocketmine/pocketmine-mp": "^5.0.0",
+    "php": "^8.2"
+  },
+  "autoload": {
+    "classmap": [
+      "src"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Premier MCPE"
+    }
+  ]
+}
