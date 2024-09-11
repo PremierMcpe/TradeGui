@@ -4,6 +4,9 @@ namespace PremierMcpe\TradeGui;
 
 class TradeManager
 {
+    /**
+     * @var array<string,string>
+     */
     private static array $requests = [];
 
     public static function addRequest(string $senderName, string $receiverName): bool

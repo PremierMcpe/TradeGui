@@ -18,7 +18,7 @@ class TradeRequestForm extends ModalForm
             'sender' => $sender->getName()
         ]), function (Player $player, bool $choice) use ($sender): void {
             if ($choice) {
-                if ($tradeRequest = TradeManager::getRequest($sender->getName())) {
+                if (($tradeRequest = TradeManager::getRequest($sender->getName())) !== null) {
                     if ($tradeRequest === $player->getName()) {
                         $inventory = new TradeInventory($sender, $player);
                         $inventory->open();

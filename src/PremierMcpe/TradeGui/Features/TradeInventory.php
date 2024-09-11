@@ -29,7 +29,6 @@ class TradeInventory
     private const SENDER_ACTION_SLOT = 48;
     private const RECEIVER_ACTION_SLOT = 50;
     private const ACTION_KEY = 'action';
-    private const NAME_WAITING_TRADE = 'Waiting for start trade';
 
     private InvMenu $inventory;
     private ?TaskHandler $startTask = null;
@@ -121,8 +120,10 @@ class TradeInventory
 
     private function createTimerItem(string $blockType, string $customName): Item
     {
+        /** @var Item $item */
         $item = StringToItemParser::getInstance()->parse($blockType);
         $item->setCustomName($customName);
+
         return $item;
     }
 
@@ -134,6 +135,7 @@ class TradeInventory
     private function createActionItem(ActionEnum $action): Item
     {
         $localization = Main::getInstance()->getLocalization($this->sender->getLocale());
+        /** @var Item $item */
         $item = StringToItemParser::getInstance()->parse($action->getItemType());
         $item->setNamedTag($this->createActionCompoundTag($action));
         $item->setCustomName($localization->translate($action->getItemName()));
@@ -179,6 +181,9 @@ class TradeInventory
         return in_array($slot, $allowedSlots, true) && $slot !== $actionSlot;
     }
 
+    /**
+     * @return array<int>
+     */
     private function getAllowedSlotsForPlayer(Player $player): array
     {
         return $this->isSender($player) ? self::SENDER_SLOTS : self::RECEIVER_SLOTS;

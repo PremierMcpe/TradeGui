@@ -23,7 +23,7 @@ class TradeStartTask extends Task
         $this->seconds--;
 
         if ($this->seconds < -1) {
-            $this->getHandler()->cancel();
+            $this->getHandler()?->cancel();
             $this->inventory->endTrade();
         }
     }

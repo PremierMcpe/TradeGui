@@ -27,7 +27,7 @@ class TradeCommand extends Command implements PluginOwned
             return false;
         }
 
-        if (empty($args[0])) {
+        if ($args[0] == "") {
             $sender->sendMessage($this->main->getLocalization($sender->getLocale())->translate(TradeTranslations::USAGE_MESSAGE, [
                 'command' => $commandLabel
             ]));

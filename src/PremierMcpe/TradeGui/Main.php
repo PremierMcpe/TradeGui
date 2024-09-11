@@ -12,6 +12,8 @@ use PremierMcpe\TradeGui\Utils\Localization;
 class Main extends PluginBase
 {
     private static Main $instance;
+
+    /** @var array<string, Localization> */
     private array $localizations = [];
 
     public static function getInstance(): Main

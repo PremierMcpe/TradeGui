@@ -8,7 +8,8 @@ class Localization
 {
     public const FALLBACK_LANGUAGE = "en_US";
     private static string $dataPath;
-    private array $translations = [];
+    /** @var array<string,string>|null */
+    private ?array $translations = [];
 
     public function __construct(string $locale)
     {
@@ -17,15 +18,22 @@ class Localization
 
     private function loadTranslations(string $locale): void
     {
-        $this->translations = $this->parseLanguageFile($locale) ?: $this->parseLanguageFile(self::FALLBACK_LANGUAGE);
+        $this->translations = $this->parseLanguageFile($locale) ?? $this->parseLanguageFile(self::FALLBACK_LANGUAGE);
     }
 
+    /**
+     * @return array<string,string>|null
+     */
     private function parseLanguageFile(string $locale): ?array
     {
         $filePath = Path::join(self::$dataPath, "languages/{$locale}.ini");
+
         if (file_exists($filePath)) {
-            return parse_ini_file($filePath, false, INI_SCANNER_RAW);
+            $parsedFile = parse_ini_file($filePath, false, INI_SCANNER_RAW);
+
+            return $parsedFile !== false ? $parsedFile : null;
         }
+
         return null;
     }
 
@@ -34,6 +42,11 @@ class Localization
         self::$dataPath = $path;
     }
 
+    /**
+     * @param string $translateKey
+     * @param array<string,string|int> $params
+     * @return string
+     */
     public function translate(string $translateKey, array $params = []): string
     {
         $translation = $this->translations[$translateKey] ?? $translateKey;
@@ -41,16 +54,24 @@ class Localization
         return $this->replaceParams($translation, $params);
     }
 
+    /**
+     * @param string $translation
+     * @param array<string,string|int> $params
+     * @return string
+     */
     private function replaceParams(string $translation, array $params): string
     {
         foreach ($params as $key => $value) {
-            $translation = str_replace("{{$key}}", $value, $translation);
+            $translation = str_replace("{{$key}}", (string)$value, $translation);
         }
+
         return $translation;
     }
 
     public function __toString(): string
     {
-        return json_encode($this->translations);
+        $encoded = json_encode($this->translations);
+
+        return $encoded !== false ? $encoded : '{}';
     }
 }
