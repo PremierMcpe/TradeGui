@@ -5,7 +5,7 @@
   "version": "v1.0.0",
   "require": {
     "muqsit/invmenu": "^4.6.5",
-    "dktapps/pmforms": "^2.2.0"
+    "dktapps/pmforms": "^2.1.0"
   },
   "require-dev": {
     "pocketmine/pocketmine-mp": "^5.0.0",
