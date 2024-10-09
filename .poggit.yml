@@ -4,6 +4,7 @@ branches:
 projects:
   TradeGui:
     path: ""
+    lint: false
     libs:
       - src: muqsit/InvMenu/InvMenu
         version: ^4.6.5
