@@ -1,6 +1,5 @@
-# TradeGui Plugin for PocketMine-MP
 
-## Overview
+## General
 
 **TradeGui** is a PocketMine-MP plugin that allows players to perform trades with an interactive graphical user
 interface (GUI). This plugin provides a smooth and customizable trading experience, including features like localization
@@ -26,7 +25,7 @@ for multiple languages and asynchronous trade management.
 This is the main command for starting trades.
 
 - **Usage**: `/trade [player_name]`
-    - Initiates a trade with the specified player.
+  - Initiates a trade with the specified player.
 
 ## Localization
 
@@ -35,12 +34,10 @@ To add a new language:
 
 1. Create a new `.ini` file in the `plugins_data/TradeGui/languages/` directory (e.g., `es_ES.ini` for Spanish).
 2. Define your key-value pairs in the file:
-
-```ini
-command.usage = /{command} <player>
-command.description = Allows you to trade with a player
-```
-
+    ```ini
+    command.usage = /{command} <player>
+    command.description = Allows you to trade with a player
+    ```
 3. The plugin will automatically load available languages and use them based on player preferences or settings.
 
 ### Default Language
@@ -57,15 +54,3 @@ The plugin uses custom events to handle various trade-related actions:
 
 These events are defined in the `Events/` directory and can be listened to by other plugins or extended for custom
 logic.
-
-## Contributing
-
-We welcome contributions from the community. If you want to contribute:
-
-1. Fork the repository.
-2. Make your changes in a new branch.
-3. Submit a pull request.
-
-## License
-
-This plugin is open-source and available under the MIT License.
