@@ -1,4 +1,3 @@
-
 ## General
 
 **TradeGui** is a PocketMine-MP plugin that allows players to perform trades with an interactive graphical user
@@ -25,7 +24,7 @@ for multiple languages and asynchronous trade management.
 This is the main command for starting trades.
 
 - **Usage**: `/trade [player_name]`
-  - Initiates a trade with the specified player.
+    - Initiates a trade with the specified player.
 
 ## Localization
 
